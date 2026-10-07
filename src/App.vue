@@ -7,16 +7,16 @@ import Recomendacoes from './components/Recomendacoes.vue'
 const navItems = ['Início', 'Séries', 'Filmes', 'Novidades', 'Minha lista']
 
 const continueWatching = [
-  { title: 'A Espiã', genre: 'Ação', progress: 68, gradient: 'linear-gradient(135deg, #ff7a18, #af1a2d)' },
-  { title: 'Névoa Negra', genre: 'Thriller', progress: 42, gradient: 'linear-gradient(135deg, #6044d9, #1d224f)' },
-  { title: 'Dunas da Noite', genre: 'Ficção', progress: 85, gradient: 'linear-gradient(135deg, #1b9aaa, #190b50)' },
+  { title: 'A Espiã', genre: 'Ação', progress: 68, gradient: 'linear-gradient(135deg, #ff7a18, #af1a2d)', poster: '/espia.jpeg' },
+  { title: 'Névoa Negra', genre: 'Thriller', progress: 42, gradient: 'linear-gradient(135deg, #6044d9, #1d224f)', poster: '/nevoa.jpeg' },
+  { title: 'Dunas da Noite', genre: 'Ficção', progress: 85, gradient: 'linear-gradient(135deg, #1b9aaa, #190b50)', poster: '/dunas.jpeg' },
 ]
 
 const trending = [
-  { title: 'O Último Trovão', caption: 'Ação • 96 min', accent: '#ffb800' },
-  { title: 'Vento em Fúria', caption: 'Drama • 124 min', accent: '#8ab4ff' },
-  { title: 'Muralha 3', caption: 'Fantasia • 118 min', accent: '#ff6b6b' },
-  { title: 'Nuvens do Amanhã', caption: 'Sci-Fi • 101 min', accent: '#5eead4' },
+  { title: 'O Último Trovão', caption: 'Ação • 96 min', accent: '#ffe56a', poster: '/raio.jpeg' },
+  { title: 'Vento em Fúria', caption: 'Drama • 124 min', accent: '#8ab4ff', poster: '/vento.jpeg' },
+  { title: 'Muralha 3', caption: 'Fantasia • 118 min', accent: '#ff6b6b', poster: '/muralha.jpeg' },
+  { title: 'Nuvens do Amanhã', caption: 'Sci-Fi • 101 min', accent: '#5eead4', poster: '/nuvem.jpeg' },
 ]
 </script>
 
@@ -37,10 +37,10 @@ const trending = [
   width: min(1400px, calc(100% - 32px));
   margin: 20px auto;
   padding: 24px 26px 40px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(71, 232, 255, 0.16);
   border-radius: 28px;
-  background: rgba(10, 11, 18, 0.86);
-  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.45);
+  background: linear-gradient(145deg, rgba(12, 15, 28, 0.96), rgba(7, 15, 25, 0.94));
+  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.45), 0 0 60px rgba(71, 232, 255, 0.05);
   backdrop-filter: blur(10px);
 }
 

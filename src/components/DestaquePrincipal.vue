@@ -24,21 +24,21 @@
     <div class="hero-visual" aria-label="Poster do filme do destaque">
       <div class="poster-glow"></div>
       <div class="movie-card large-card">
+        <img src="/sombra.jpeg" alt="Poster de Sombras do Norte" class="featured-poster">
         <div class="poster-overlay"></div>
+        <span class="happy-overlay" aria-hidden="true">😊</span>
         <div class="poster-content">
           <span class="tag">Top 10</span>
           <h2>Sombras do Norte</h2>
         </div>
-      </div>
-
-      <div class="floating-badge info-badge">
-        <span class="tiny-label">Nota</span>
-        <strong>9.7</strong>
-      </div>
-
-      <div class="floating-badge genre-badge">
-        <span class="tiny-label">Gênero</span>
-        <strong>Fantasia</strong>
+        <div class="floating-badge info-badge">
+          <span class="tiny-label">Nota</span>
+          <strong>9.7</strong>
+        </div>
+        <div class="floating-badge genre-badge">
+          <span class="tiny-label">Gênero</span>
+          <strong>Fantasia</strong>
+        </div>
       </div>
     </div>
   </section>
@@ -66,9 +66,9 @@
   align-items: center;
   padding: 8px 14px;
   border-radius: 999px;
-  background: rgba(255, 121, 90, 0.14);
-  border: 1px solid rgba(255, 129, 90, 0.2);
-  color: #ffb48d;
+  background: rgba(71, 232, 255, 0.1);
+  border: 1px solid rgba(71, 232, 255, 0.32);
+  color: var(--accent-cyan);
   font-size: 0.72rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -119,16 +119,16 @@
 }
 
 .primary-button {
-  background: linear-gradient(135deg, #ff5b77, #ff9d43);
+  background: linear-gradient(135deg, var(--accent-pink), #ff8a4c);
   color: white;
   font-weight: 700;
-  box-shadow: 0 14px 28px rgba(255, 102, 102, 0.35);
+  box-shadow: 0 14px 28px rgba(255, 79, 154, 0.32);
 }
 
 .secondary-button {
   background: rgba(255, 255, 255, 0.08);
   color: white;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(71, 232, 255, 0.28);
 }
 
 .hero-visual {
@@ -143,7 +143,9 @@
   position: absolute;
   inset: 40px 80px 50px 80px;
   border-radius: 40px;
-  background: radial-gradient(circle at center, rgba(255, 92, 109, 0.32), rgba(16, 18, 28, 0) 68%);
+  background:
+    radial-gradient(circle at 40% 42%, rgba(71, 232, 255, 0.24), transparent 62%),
+    radial-gradient(circle at 62% 58%, rgba(255, 79, 154, 0.25), transparent 68%);
   filter: blur(18px);
 }
 
@@ -153,17 +155,19 @@
   height: 520px;
   border-radius: 34px;
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(71, 232, 255, 0.34);
   background: linear-gradient(160deg, rgba(9, 12, 17, 0.16), rgba(8, 10, 17, 0));
   box-shadow: 0 34px 52px rgba(0, 0, 0, 0.46);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .poster-overlay {
   position: absolute;
   inset: 0;
+  z-index: 1;
   background:
-    linear-gradient(180deg, rgba(12, 15, 25, 0.12), rgba(8, 10, 17, 0.78)),
-    linear-gradient(135deg, rgba(255, 118, 94, 0.75), rgba(48, 22, 78, 0.1) 45%, rgba(17, 24, 36, 0.86) 100%);
+    linear-gradient(180deg, rgba(12, 15, 25, 0.02) 18%, rgba(8, 10, 17, 0.82) 100%),
+    linear-gradient(135deg, rgba(255, 79, 154, 0.12), transparent 52%, rgba(71, 232, 255, 0.16));
 }
 
 .movie-card::before {
@@ -176,18 +180,43 @@
     linear-gradient(135deg, rgba(21, 27, 38, 0.8), rgba(12, 14, 24, 0.22));
 }
 
+.featured-poster {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.3s ease, transform 0.45s ease;
+}
+
+.happy-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  color: var(--accent-gold);
+  font-size: 5rem;
+  line-height: 1;
+  opacity: 0;
+  pointer-events: none;
+  text-shadow: 0 0 28px rgba(255, 229, 106, 0.9);
+  transform: scale(0.65) rotate(-12deg);
+  transition: opacity 0.25s ease, transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
 .poster-content {
   position: absolute;
   inset: auto 28px 28px 28px;
-  z-index: 1;
+  z-index: 3;
 }
 
 .tag {
   display: inline-block;
   padding: 7px 12px;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.12);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(71, 232, 255, 0.22);
+  border: 1px solid rgba(71, 232, 255, 0.48);
   color: #fff;
   font-size: 0.68rem;
   text-transform: uppercase;
@@ -202,14 +231,50 @@
   color: white;
 }
 
+@media (hover: hover) {
+  .movie-card:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 42px 64px rgba(0, 0, 0, 0.55);
+  }
+
+  .movie-card:hover .featured-poster {
+    opacity: 0.4;
+    transform: scale(1.04);
+  }
+
+  .movie-card:hover .happy-overlay {
+    animation: happy-emoji-peek 1.25s ease-out both;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .movie-card,
+  .featured-poster,
+  .happy-overlay {
+    transition: none;
+  }
+
+  .movie-card:hover,
+  .movie-card:hover .featured-poster {
+    transform: none;
+  }
+
+  .movie-card:hover .happy-overlay {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
 .floating-badge {
   position: absolute;
+  z-index: 3;
   display: flex;
   flex-direction: column;
   gap: 4px;
   padding: 14px 16px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background: rgba(13, 18, 28, 0.5);
+  border: 1px solid rgba(71, 232, 255, 0.26);
+  background: rgba(8, 18, 30, 0.76);
   backdrop-filter: blur(8px);
   border-radius: 18px;
   color: #fff;
@@ -217,13 +282,13 @@
 }
 
 .info-badge {
+  top: 18px;
   right: 18px;
-  bottom: 110px;
 }
 
 .genre-badge {
+  top: 18px;
   left: 18px;
-  bottom: 38px;
 }
 
 .tiny-label {
@@ -235,6 +300,14 @@
 
 .floating-badge strong {
   font-size: 1.1rem;
+}
+
+.info-badge strong {
+  color: var(--accent-gold);
+}
+
+.genre-badge strong {
+  color: var(--accent-cyan);
 }
 
 @media (max-width: 980px) {

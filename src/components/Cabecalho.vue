@@ -43,9 +43,10 @@ defineProps<{
   display: grid;
   place-items: center;
   border-radius: 12px;
-  background: linear-gradient(135deg, #ff4f7b, #ff9f43);
+  background: linear-gradient(135deg, var(--accent-pink), #ff9f43 58%, var(--accent-gold));
   color: #fff;
   font-weight: 800;
+  box-shadow: 0 0 22px rgba(255, 79, 154, 0.28);
 }
 
 .brand-name {
@@ -64,13 +65,39 @@ defineProps<{
 }
 
 .nav-link {
+  position: relative;
+  padding: 8px 0;
   color: rgba(255, 255, 255, 0.7);
   text-decoration: none;
   font-size: 0.92rem;
+  transition: color 0.2s ease;
+}
+
+.nav-link::after {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  background: var(--accent-cyan);
+  box-shadow: 0 0 10px rgba(71, 232, 255, 0.75);
+  content: '';
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.2s ease;
+}
+
+.nav-link:first-child {
+  color: var(--accent-cyan);
+}
+
+.nav-link:first-child::after,
+.nav-link:hover::after {
+  transform: scaleX(1);
 }
 
 .nav-link:hover {
-  color: #fff;
+  color: var(--accent-cyan);
   background: transparent;
 }
 
@@ -100,22 +127,28 @@ button:hover {
 }
 
 .primary-button {
-  background: linear-gradient(135deg, #ff5b77, #ff9d43);
+  background: linear-gradient(135deg, var(--accent-pink), #ff8a4c);
   color: white;
   font-weight: 700;
-  box-shadow: 0 14px 28px rgba(255, 102, 102, 0.35);
+  box-shadow: 0 12px 28px rgba(255, 79, 154, 0.3);
 }
 
 .secondary-button {
   background: rgba(255, 255, 255, 0.08);
   color: white;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(71, 232, 255, 0.28);
 }
 
 .ghost-button {
   background: transparent;
   color: rgba(255, 255, 255, 0.7);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(71, 232, 255, 0.2);
+}
+
+.ghost-button:hover {
+  color: var(--accent-cyan);
+  border-color: rgba(71, 232, 255, 0.6);
+  box-shadow: 0 0 18px rgba(71, 232, 255, 0.14);
 }
 
 @media (max-width: 980px) {
